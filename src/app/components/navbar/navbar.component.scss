@@ -1,0 +1,40 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.navbar {
+  display: flex;
+  position: absolute;
+  width: 100%;
+  align-items: center;
+  justify-content: space-between;
+  background-color: transparent; /* Fondo transparente */
+  z-index: 1000; /* Asegura que la navbar esté por encima de otros elementos */
+  padding: 10px 20px;
+  
+}
+
+.navbar img {
+  height: clamp(40px, 8vw, 80px); /* Mínimo 40px, máximo 80px, escala con el ancho de la ventana */
+  width: auto;
+  transition: height 0.3s;
+}
+
+.navbar-opciones a {
+  text-decoration: none;
+  padding: 10px 15px;
+  font-size: 1.2rem;
+  font-weight:500;
+  color: rgb(255, 255, 255);
+
+}
+
+
+.navbar-opciones a:hover {
+  transform: scale(1.1); /* Aumenta el tamaño al pasar el cursor */
+  transition: transform 0.3s ease; /* Suaviza la transición */
+
+}
+

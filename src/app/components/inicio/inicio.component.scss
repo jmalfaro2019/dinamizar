@@ -1,0 +1,156 @@
+@use '../../../variables.scss' as *;
+.imagen-inicio {
+  position: relative;
+  background: #000;
+  color: #fff;
+  flex-direction: column;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  background-image: url("/img/imagen-inicio1.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  z-index: 0; // ← necesario para el stacking
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6); // ← opacidad ajustable
+    z-index: 1;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+  }
+}
+
+.seccion-1 {
+  padding: 10vh 5vw;
+  background-color: var(--bg);
+
+  .titulo {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+  }
+
+  .custom-row {
+    display: flex;
+    flex-wrap: nowrap; // que no se envuelvan
+    align-items: center;
+  }
+
+  .carrusel-col {
+    flex: 0 0 auto; // no crecerá para llenar
+    max-width: 600px; // ancho máximo que quieras
+    width: 100%; // para md-6 al 100% de hasta 500px
+  }
+
+  .carrusel {
+    overflow: hidden; 
+
+    img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+  }
+
+  .razones {
+    flex: 1 1 auto; // crecerá para ocupar el espacio sobrante
+    // tus estilos previos
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 20px;
+    text-align: center;
+  }
+
+  .numbers {
+    font-size: 2rem;
+    font-weight: 800;
+  }
+
+  @media (max-width: 767.98px) {
+  .custom-row {
+    flex-wrap: wrap;          // permite que las columnas se envuelvan
+  }
+  .carrusel-col,
+  .razones {
+    flex: 0 0 100% !important; // ancho completo
+    max-width: 100% !important;
+  }
+}
+}
+
+.seccion-2 {
+  background-color: var(--color-primary);
+  color: var(--bg);
+  width: 100%;
+
+  /* Hacemos que la row sea flex y estire columnas */
+  .custom-row {
+    display: flex;
+    flex-wrap: wrap;           /* mantiene comportamiento responsivo */
+    align-items: stretch;      /* <-- clave: iguala altura de columnas */
+  }
+
+  .texto {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;   /* centra verticalmente el texto dentro de la columna */
+    align-items: center;
+    gap: 3vh;
+    padding: 3rem 2rem;
+
+    .titulo {
+      margin: 0;               /* quitar margin nativo del h2 */
+      font-size: 2.5rem;
+      font-weight: 700;
+      text-align: center;
+    }
+
+    h5 {
+      margin: 0;               /* quitar margin nativo */
+      text-align: center;
+    }
+  }
+
+  .col-imagen {
+    padding: 0;                /* eliminar padding del grid que genera desface */
+    display: flex;             /* para poder estirar la img */
+    align-items: stretch;
+
+    img {
+      width: 100%;
+      height: 100%;            /* ocupa toda la altura de la columna */
+      object-fit: cover;       /* comport. cover */
+      object-position: center; /* puedes usar 'top' si quieres que se alinee por arriba */
+      display: block;
+    }
+  }
+
+  /* Responsive: en pantallas pequeñas las columnas apilan (ya lo hace col-12 col-md-6),
+     si quieres más separación entre texto e imagen en móvil puedes añadir: */
+  @media (max-width: 767.98px) {
+    .texto {
+      padding: 2rem 1rem;
+    }
+    .col-imagen {
+      margin-top: 1rem;
+    }
+  }
+}

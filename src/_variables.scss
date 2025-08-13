@@ -1,0 +1,58 @@
+$font-heading: "Montserrat", serif;
+$font-body: "Montserrat", sans-serif;
+$font-numbers: "Montserrat", monospace;
+// src/styles/_variables.scss
+// ==========================
+// Palette (proporcionada)
+$color-1: #0069c0; // primary (marca)
+$color-2: #137fd9; // primary-variant
+$color-3: #2196f3; // accent / interactive
+$color-4: #003764; // contrast
+$gray-1:  #5e6266; // text-dark / neutral strong
+$gray-2:  #929292; // text-muted / neutral light
+
+// Semantic tokens (usa estas en tu CSS)
+:root {
+  /* Brand */
+  --color-primary: #0069c0;
+  --color-primary-600: #137fd9;
+  --color-accent: #2196f3;
+
+  /* Neutrals / Text */
+  --text: #5e6266;
+  --text-muted: #929292;
+
+  /* Surfaces & borders */
+  --bg: #ffffff;          /* página principal */
+  --surface: #ffffff;     /* cards, contenedores */
+  --muted-border: #e6e9ec;/* linea sutil */
+
+  /* Semantic states */
+  --success: #16a34a;
+  --warning: #f59e0b;
+  --danger:  #dc2626;
+
+  /* Misc */
+  --overlay-dark: rgba(0,0,0,0.45);
+  --radius: 12px;
+  --radius-sm: 8px;
+  --elevation-1: 0 6px 18px rgba(15, 23, 42, 0.06);
+}
+
+/* SCSS aliases/helpers */
+$primary: var(--color-primary);
+$primary-600: var(--color-primary-600);
+$accent: var(--color-accent);
+$text: var(--text);
+$text-muted: var(--text-muted);
+$radius: var(--radius);
+
+/* Utility mixins */
+@function hex-to-rgba($hex, $alpha: 1) {
+  @return rgba(red($hex), green($hex), blue($hex), $alpha);
+}
+
+@mixin focus-ring($color, $alpha: 0.14) {
+  box-shadow: 0 0 0 4px rgba($color, $alpha);
+  outline: none;
+}

@@ -1,0 +1,36 @@
+<nav class="navbar navbar-expand-lg" >
+    <div class="container-fluid px-5">
+        <!-- Imagen a la izquierda -->
+        <a class="navbar-brand d-flex align-items-center" href="#">
+            <img src="img/Logo Dinamizar blanco-color.svg" alt="Logo" class="me-2">
+        </a>
+
+        <!-- Botón hamburguesa para móviles -->
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContenido"
+            aria-controls="navbarContenido" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <!-- Enlaces -->
+        <div class="collapse navbar-collapse navbar-opciones" id="navbarContenido">
+            <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                <a class="nav-link px-4 fs-5" routerLink="Inicio" routerLinkActive="active"
+                    [routerLinkActiveOptions]="{exact: true}">Inicio</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link px-4 fs-5" routerLink="Nosotros" routerLinkActive="active"
+                        [routerLinkActiveOptions]="{exact: true}">Nosotros</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link px-4 fs-5" routerLink="Servicios" routerLinkActive="active"
+                        [routerLinkActiveOptions]="{exact: true}">Servicios</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link px-4 fs-5" routerLink="Contacto" routerLinkActive="active"
+                        [routerLinkActiveOptions]="{exact: true}">Contacto</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>

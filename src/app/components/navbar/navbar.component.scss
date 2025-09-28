@@ -38,3 +38,16 @@
 
 }
 
+.navbar-collapse {
+  background-color: rgba(0, 0, 0, 0.85); // negro con opacidad
+  padding: 1rem; // un poco de espacio interno
+  border-radius: 0.5rem; // opcional: esquinas redondeadas
+}
+@media (min-width: 992px) { // breakpoint lg de Bootstrap
+  .navbar-collapse {
+    background-color: transparent; // en escritorio sigue siendo transparente
+    padding: 0;
+    border-radius: 0;
+  }
+}
+

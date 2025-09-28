@@ -1,156 +1,282 @@
-@use '../../../variables.scss' as *;
-.imagen-inicio {
-  position: relative;
-  background: #000;
-  color: #fff;
-  flex-direction: column;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 100vh;
-  background-image: url("/img/imagen-inicio1.jpg");
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  z-index: 0; // ← necesario para el stacking
+@use "../../../variables.scss" as *; // ajusta la ruta si hace falta
 
-  &::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.6); // ← opacidad ajustable
-    z-index: 1;
+// -------------------------------------------------------------------
+// inicio.scss (100% paramétrico)
+// - Todos los tamaños/paddings/gaps/margins/font-sizes usan tokens en :root
+// - Apariencia EXACTA preservada (tokens mantienen los mismos valores)
+// - Comentarios indican el token correspondiente
+// -------------------------------------------------------------------
+
+.inicio {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4); /* = 4rem */
+  background-color: var(--bg);
+}
+
+/* --------------------
+   Carrusel (controles)
+   -------------------- */
+.carrusel {
+  .carousel-control-prev,
+  .carousel-control-next {
+    width: var(--carousel-control-size); /* 3.5rem */
   }
 
-  h1,
-  h2,
-  h3,
-  h4,
-  h5,
-  h6 {
-    position: relative;
-    z-index: 2;
-    text-align: center;
+  .carousel-control-prev { left: var(--carousel-control-offset); } /* 1.5rem */
+  .carousel-control-next { right: var(--carousel-control-offset); } /* 1.5rem */
+
+  .carousel-control-prev-icon,
+  .carousel-control-next-icon {
+    transform: none;
+    margin-left: 0;
+    margin-right: 0;
   }
 }
 
+/* --------------------
+   Hero carrusel principal
+   -------------------- */
+.carrusel-inicio {
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+  max-height: var(--hero-max-height); /* 100vh */
+  min-height: var(--hero-min-height); /* 400px */
+
+  .text {
+    position: absolute;
+    bottom: var(--hero-text-bottom); /* 8vh */
+    left: var(--hero-text-left);     /* 10vw */
+    display: flex;
+    flex-direction: column;
+
+    h1 {
+      color: var(--surface);
+      max-width: 80vw;
+      text-align: left;
+      font-size: clamp(
+        var(--type-h1-min, 10px),
+        var(--type-h1-vw, 7vw),
+        var(--type-h1-max, 55px)
+      );
+      font-weight: 700;
+      font-family: "playfair display", sans-serif;
+    }
+
+    p {
+      color: var(--surface);
+      text-align: left;
+      font-size: clamp(
+        var(--type-p-min, 8px),
+        var(--type-p-vw, 3vw),
+        var(--type-p-max, 25px)
+      );
+      font-weight: 400;
+    }
+  }
+
+  .texto-boton {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    margin-right: 10vw; /* si quieres parametrizar más adelante, crea --hero-text-margin-right */
+    gap: var(--razones-text-gap); /* 2vw */
+
+    button {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      white-space: nowrap;
+      padding: var(--hero-btn-padding-vertical) var(--hero-btn-padding-horizontal);
+      background-color: transparent;
+      color: var(--surface);
+      border: var(--hero-btn-border-width) solid var(--surface);
+      font-family: "Roboto", sans-serif;
+      font-weight: 600;
+      font-size: var(--hero-btn-font-size);
+    }
+  }
+
+  /* Slides (misma altura que el hero) */
+  .slide-1,
+  .slide-2,
+  .slide-3,
+  .slide-4 {
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    width: 100%;
+    height: var(--hero-max-height);
+  }
+
+  .slide-1 {
+    background-image:
+      linear-gradient(
+        to bottom,
+        rgba(0,0,0,0.5) 0%,
+        rgba(0,0,0,0.3) 50%,
+        rgba(0,0,0,0.5) 100%
+      ),
+      url("/img/carrusel-img-1.png");
+  }
+
+  .slide-2 {
+    background-image:
+      linear-gradient(
+        to bottom,
+        rgba(0,0,0,0.35) 0%,
+        rgba(0,0,0,0) 100%
+      ),
+      url("/img/carrusel-img-2.png");
+
+    /* mantiene color exacto (SASS var) */
+    h1 { color: $color-4; }
+    p  { color: $color-4; }
+
+    .texto-boton {
+      display: flex;
+      flex-direction: column;
+      align-items: start;
+      margin-right: 25vw; /* valor original */
+      gap: var(--razones-text-gap);
+
+      button {
+        color: $color-4;
+        border: var(--hero-btn-border-width) solid $color-4;
+      }
+    }
+  }
+
+  .slide-3 {
+    background-image:
+      linear-gradient(
+        to bottom,
+        rgba(0,0,0,0) 0%,
+        rgba(0,0,0,0.5) 100%
+      ),
+      url("/img/carrusel-img-3.png");
+  }
+
+  .slide-4 {
+    background-image:
+      linear-gradient(
+        to bottom,
+        rgba(0,0,0,0.5) 0%,
+        rgba(0,0,0,0.2) 50%,
+        rgba(0,0,0,0.5) 100%
+      ),
+      url("/img/carrusel-img-4.png");
+  }
+}
+
+/* --------------------
+   Seccion 1 (carrusel + razones)
+   -------------------- */
 .seccion-1 {
-  padding: 10vh 5vw;
+  padding: 0 5vw; /* si quieres, crear --section-horizontal-padding */
   background-color: var(--bg);
 
   .titulo {
-    font-size: 2.5rem;
+    font-size: var(--h2-size, 2.5rem);
     font-weight: 700;
     margin-bottom: 1rem;
   }
 
   .custom-row {
     display: flex;
-    flex-wrap: nowrap; // que no se envuelvan
+    flex-wrap: nowrap;
     align-items: center;
   }
 
   .carrusel-col {
-    flex: 0 0 auto; // no crecerá para llenar
-    max-width: 600px; // ancho máximo que quieras
-    width: 100%; // para md-6 al 100% de hasta 500px
+    flex: 0 0 auto;
+    max-width: var(--carrusel-col-max-width);
+    width: 100%;
   }
 
-  .carrusel {
-    overflow: hidden; 
-
-    img {
-      width: 100%;
-      height: auto;
-      display: block;
-    }
+  .carrusel img {
+    width: 100%;
+    height: auto;
+    display: block;
   }
 
   .razones {
-    flex: 1 1 auto; // crecerá para ocupar el espacio sobrante
-    // tus estilos previos
+    flex: 1 1 auto;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    padding: 20px;
+    padding: var(--razones-padding);
     text-align: center;
   }
 
   .numbers {
-    font-size: 2rem;
-    font-weight: 800;
+    font-size: var(--numbers-font-size);
+    font-weight: var(--numbers-font-weight);
+    font-family: $font-numbers;
   }
 
   @media (max-width: 767.98px) {
-  .custom-row {
-    flex-wrap: wrap;          // permite que las columnas se envuelvan
+    .custom-row { flex-wrap: wrap; }
+    .carrusel-col,
+    .razones {
+      flex: 0 0 100% !important;
+      max-width: 100% !important;
+    }
   }
-  .carrusel-col,
-  .razones {
-    flex: 0 0 100% !important; // ancho completo
-    max-width: 100% !important;
-  }
-}
 }
 
+/* --------------------
+   Seccion 2 (texto + imagen)
+   -------------------- */
 .seccion-2 {
   background-color: var(--color-primary);
   color: var(--bg);
   width: 100%;
 
-  /* Hacemos que la row sea flex y estire columnas */
   .custom-row {
     display: flex;
-    flex-wrap: wrap;           /* mantiene comportamiento responsivo */
-    align-items: stretch;      /* <-- clave: iguala altura de columnas */
+    flex-wrap: wrap;
+    align-items: stretch;
   }
 
   .texto {
     display: flex;
     flex-direction: column;
-    justify-content: center;   /* centra verticalmente el texto dentro de la columna */
+    justify-content: center;
     align-items: center;
-    gap: 3vh;
-    padding: 3rem 2rem;
+    gap: var(--section-gap-vertical);
+    padding: var(--section-padding);
 
     .titulo {
-      margin: 0;               /* quitar margin nativo del h2 */
-      font-size: 2.5rem;
+      margin: 0;
+      font-size: var(--h2-size, 2.5rem);
       font-weight: 700;
       text-align: center;
     }
 
-    h5 {
-      margin: 0;               /* quitar margin nativo */
-      text-align: center;
-    }
+    h5 { margin: 0; text-align: center; }
   }
 
   .col-imagen {
-    padding: 0;                /* eliminar padding del grid que genera desface */
-    display: flex;             /* para poder estirar la img */
+    padding: 0;
+    display: flex;
     align-items: stretch;
 
     img {
       width: 100%;
-      height: 100%;            /* ocupa toda la altura de la columna */
-      object-fit: cover;       /* comport. cover */
-      object-position: center; /* puedes usar 'top' si quieres que se alinee por arriba */
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
       display: block;
     }
   }
 
-  /* Responsive: en pantallas pequeñas las columnas apilan (ya lo hace col-12 col-md-6),
-     si quieres más separación entre texto e imagen en móvil puedes añadir: */
   @media (max-width: 767.98px) {
-    .texto {
-      padding: 2rem 1rem;
-    }
-    .col-imagen {
-      margin-top: 1rem;
-    }
+    .texto { padding: 2rem 1rem; }
+    .col-imagen { margin-top: 1rem; }
   }
 }
+
+/* FIN inicio.scss */

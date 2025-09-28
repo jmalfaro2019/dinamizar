@@ -1,0 +1,193 @@
+@use "../../../variables.scss" as *;
+
+.site-footer {
+  background-color: $footer-bg;
+  color: $footer-text;
+  font-size: 0.95rem;
+  line-height: 1.5;
+
+  // sección superior (socials)
+  > section {
+    border-bottom-color: rgba(255, 255, 255, 0.06); // sutil
+  }
+
+  // contenedor general
+  .container {
+    color: $footer-text;
+  }
+
+  // Forzar el color en elementos que Bootstrap marca como text-muted
+  &.text-muted,
+  .text-muted {
+    color: $muted; // si quieres que algunos textos sean más claros usa $muted,
+    // o pon color:$footer-text para que todo sea blanco
+  }
+
+  // Links: texto blanco y efecto hover
+  a {
+    color: $footer-text;
+    text-decoration: none;
+    transition: color 0.18s ease, transform 0.12s ease; // un blanco ligeramente más brillante
+    text-decoration: none;
+    transform: translateY(-1px);
+  }
+
+  // Iconos FontAwesome
+  i.fab,
+  i.fas {
+    color: $footer-text;
+    opacity: 0.95;
+    font-size: 1.5rem;
+    transition: opacity 0.18s ease, transform 0.18s ease;
+  }
+  a:hover i.fab,
+  a:focus i.fab {
+    opacity: 1;
+    transform: translateY(-2px);
+  }
+
+  // Texto de apoyo / párrafos
+  p,
+  span,
+  li {
+    color: $muted;
+  }
+  span {
+    font-size: 1.2rem;
+    font-weight: 600;
+  }
+
+  // Footer bottom (copyright)
+  .footer-bottom {
+    background-color: $footer-bg-2; // ligera variación
+    color: $muted;
+    margin-top: 1.25rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.03);
+    a {
+      color: $footer-text;
+      font-weight: 600;
+    }
+  }
+
+  // Responsive: apilar en pantallas pequeñas
+  @media (max-width: 767.98px) {
+    .container {
+      text-align: center;
+    }
+    .footer-bottom {
+      padding: 1.5rem 1rem;
+    }
+  }
+}
+
+/* ---------- comportamiento flexible y responsive ---------- */
+.site-footer {
+  /* (tu bloque original ya define colores y tipografías) */
+
+  // Container flexible que sustituye al row fijo
+  .footer-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: clamp(1rem, 2.5vw, 2rem);  // gap que escala con pantalla
+    align-items: flex-start;
+    justify-content: center;        // centra cuando hay espacio extra
+    // controla el ancho interior si usas container-fluid a nivel global
+    // padding ya lo diste en el HTML con px-5 py-4
+  }
+
+  // Cada columna: ocupa lo que necesite, pero respeta un mínimo
+  .footer-col {
+    flex: 1 1 auto;         // crecer y reducir según contenido
+    min-width: 220px;       // evita que se aplaste demasiado   
+    display: flex;
+    flex-direction: column;
+    gap: clamp(0.5rem, 1.2vw, 1rem);
+
+    // uniformizar links verticales (si usas nav)
+    .links,
+    .social-links {
+      display: flex;
+      flex-direction: column;
+      gap: clamp(0.4rem, 1vw, 0.85rem);
+      a { display: inline-flex; align-items: center; gap: 0.6rem; }
+    }
+  }
+
+  // Sub-columnas dentro de la columna 3 (mapa + contacto)
+  .footer-subcols {
+    display: flex;
+    width: 100%;
+    flex-wrap: wrap;
+    gap: clamp(0.5rem, 1.2vw, 1rem);
+    align-items: stretch; /* obliga a estirarse si queremos alturas parecidas */
+  }
+
+  .contact-info {
+    flex: 1 1 260px;     // centrar según su contenido
+    min-width: 200px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 0.4rem;
+    p { margin: 0; }     // ya usamos gap para separación
+  }
+
+  .map {
+    flex: 1 1 260px;
+    min-width: 220px;
+    /* el iframe mantiene su aspecto vía aspect-ratio */
+    iframe {
+      width: 100%;
+      min-height: 160px;
+      aspect-ratio: 6 / 3;
+      border: 0;
+      display: block;
+    }
+  }
+
+  /* TIPOGRAFÍA RESPONSIVE y escalado de espacios */
+  // tamaño base del texto del footer que escala con pantalla
+  font-size: clamp(0.95rem, 1.2vw, 1rem);
+
+  // h6 (títulos de columna) más prominente pero también responsivo
+  h6 {
+    font-size: clamp(0.95rem, 1.6vw, 1.05rem);
+    margin-bottom: 0.75rem;
+  }
+
+  // iconos: mantenemos tu estilo, pero hacemos escala menor en pantallas chicas
+  i.fab, i.fas {
+    font-size: clamp(1.1rem, 1.6vw, 1.5rem); // escala con pantalla
+  }
+
+  // pequeños ajustes a enlaces para consistencia visual
+  a {
+    color: $footer-text;
+    text-decoration: none;
+    &:hover, &:focus {
+      text-decoration: underline;
+    }
+  }
+
+  /* BREAKPOINTS: ajustes más finos en tamaños pequeños */
+  @media (max-width: 992px) {
+    .footer-col { max-width: none; } // permitir que ocupen más ancho si es necesario
+  }
+
+  @media (max-width: 768px) {
+    .footer-container {
+      justify-content: center;
+      gap: clamp(0.8rem, 3vw, 1.25rem);
+    }
+    .footer-col {
+      min-width: 100%;  // fuerza apilado vertical cuando el viewport sea pequeño
+      max-width: 100%;
+    }
+    .footer-subcols {
+      gap: 0.75rem;
+      .contact-info, .map { min-width: 100%; }
+    }
+  }
+
+  /* Mantener el resto de tus reglas (colores, .footer-bottom, etc.) intactas */
+}

@@ -1,1 +1,133 @@
-<p>nosotros works!</p>
+<section class="nosotros">
+
+  <!-- Título principal sobre fondo azul -->
+  <div class="nosotros-hero">
+    <div class="container-section">
+      <h2 class="nosotros-hero__title">Acerca de nosotros</h2>
+    </div>
+    <svg class="nosotros-wave" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 120" preserveAspectRatio="none"
+      aria-hidden="true" focusable="false">
+      <!-- fill en color del fondo claro -->
+      <path d="M0,40 C360,120 1080,0 1440,60 L1440,120 L0,120 Z" fill="var(--bg)"></path>
+    </svg>
+  </div>
+
+  <!-- Bloque de video (fondo blanco, card centrada y bordes redondeados) -->
+  <div class="nosotros-video">
+    <div class="container-section">
+      <div class="video-card fade-up">
+        <!-- video placeholder: cambia la src cuando tengas tu archivo -->
+        <video controls class="video-card__media" preload="metadata">
+          <source src="vid/Video-ejemplo.mp4" type="video/mp4">
+          Tu navegador no soporta el elemento <code>video</code>.
+        </video>
+      </div>
+    </div>
+  </div>
+  <!-- Espacio consistente (usa los tokens de sección) -->
+  <div class="container-section" style="padding: 0;"></div>
+
+  <!-- Subtítulo del equipo -->
+  <div class="nosotros-team">
+    <svg class="nosotros-wave" id="inverted-wave" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 120" preserveAspectRatio="none"
+      aria-hidden="true" focusable="false">
+      <!-- fill en color del fondo claro -->
+      <path d="M0,40 C360,120 1080,0 1440,60 L1440,120 L0,120 Z" fill="var(--bg)"></path>
+    </svg>
+    <h2 class="nosotros-team__title fade-up">Nuestro equipo de consultores</h2>
+
+    <!-- Grid de consultores: 10 tarjetas -->
+    <div class="consultores-grid">
+      <!-- Repite esta card 10 veces (ejemplo con placeholders) -->
+      <article class="consultor-card fade-up" aria-labelledby="c1-name">
+        <h4 id="c1-name" class="consultor-card__name">Nombre Consultor 1</h4>
+        <div class="consultor-card__actions">
+          <button class="btn-conocer" type="button">Conocer más</button>
+        </div>
+      </article>
+
+      <article class="consultor-card fade-up" aria-labelledby="c2-name">
+        <h4 id="c2-name" class="consultor-card__name">Nombre Consultor 2</h4>
+        <div class="consultor-card__actions">
+          <button class="btn-conocer" type="button">Conocer más</button>
+        </div>
+      </article>
+
+      <article class="consultor-card fade-up" aria-labelledby="c3-name">
+        <h4 id="c3-name" class="consultor-card__name">Nombre Consultor 3</h4>
+        <div class="consultor-card__actions">
+          <button class="btn-conocer" type="button">Conocer más</button>
+        </div>
+      </article>
+
+      <article class="consultor-card fade-up" aria-labelledby="c4-name">
+        <h4 id="c4-name" class="consultor-card__name">Nombre Consultor 4</h4>
+        <div class="consultor-card__actions">
+          <button class="btn-conocer" type="button">Conocer más</button>
+        </div>
+      </article>
+
+      <article class="consultor-card fade-up" aria-labelledby="c5-name">
+        <h4 id="c5-name" class="consultor-card__name">Nombre Consultor 5</h4>
+        <div class="consultor-card__actions">
+          <button class="btn-conocer" type="button">Conocer más</button>
+        </div>
+      </article>
+
+      <article class="consultor-card fade-up" aria-labelledby="c6-name">
+        <h4 id="c6-name" class="consultor-card__name">Nombre Consultor 6</h4>
+        <div class="consultor-card__actions">
+          <button class="btn-conocer" type="button">Conocer más</button>
+        </div>
+      </article>
+
+      <article class="consultor-card fade-up" aria-labelledby="c7-name">
+        <h4 id="c7-name" class="consultor-card__name">Nombre Consultor 7</h4>
+        <div class="consultor-card__actions">
+          <button class="btn-conocer" type="button">Conocer más</button>
+        </div>
+      </article>
+
+      <article class="consultor-card fade-up" aria-labelledby="c8-name">
+        <h4 id="c8-name" class="consultor-card__name">Nombre Consultor 8</h4>
+        <div class="consultor-card__actions">
+          <button class="btn-conocer" type="button">Conocer más</button>
+        </div>
+      </article>
+
+      <article class="consultor-card fade-up" aria-labelledby="c9-name">
+        <h4 id="c9-name" class="consultor-card__name">Nombre Consultor 9</h4>
+        <div class="consultor-card__actions">
+          <button class="btn-conocer" type="button">Conocer más</button>
+        </div>
+      </article>
+
+      <article class="consultor-card fade-up" aria-labelledby="c10-name">
+        <h4 id="c10-name" class="consultor-card__name">Nombre Consultor 10</h4>
+        <div class="consultor-card__actions">
+          <button class="btn-conocer" type="button">Conocer más</button>
+        </div>
+      </article>
+
+
+    </div>
+  </div>
+
+</section>
+
+<!-- Small script to activate fade-up animation when elements enter viewport -->
+<script>
+  (function () {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.classList.add('in-view');
+          // if you want one-time animation, unobserve:
+          observer.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.12 });
+
+    document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+  })();
+</script>

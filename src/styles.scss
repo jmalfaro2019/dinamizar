@@ -1,12 +1,13 @@
-/* You can add global styles to this file, and also import other style files */
+/* styles.scss (actualizado para usar tokens globales) */
 @use './variables' as *;
 
 body {
   font-family: $font-body;
-  font-size: 1rem;
+  font-size: 1rem; /* base 16px */
   line-height: 1.5;
 }
 
+/* Headings: usar tokens centrales definidos en :root */
 h1,
 h2,
 h3,
@@ -14,27 +15,51 @@ h4,
 h5,
 h6 {
   font-family: $font-heading;
-  margin-bottom: 0.5em;
-}
-h1 {
-  font-size: 2.5rem;
-}
-h2 {
-  font-size: 2rem;
-}
-h3 {
-  font-size: 1.75rem;
-}
-h4 {
-  font-size: 1.5rem;
-}
-h5 {
-  font-size: 1.25rem;
-}
-h6 {
-  font-size: 1rem;
+  margin-bottom: var(--space-2); /* espacio modular en lugar de 0.5em */
 }
 
+/* Escala tipográfica tomada directamente de variables */
+h1 {
+  font-size: var(--h1-size);
+  line-height: 1.05;
+}
+h2 {
+  font-size: var(--h2-size);
+}
+h3 {
+  font-size: var(--h3-size);
+}
+h4 {
+  font-size: var(--h4-size);
+}
+h5 {
+  font-size: var(--h5-size);
+}
+h6 {
+  font-size: var(--h6-size);
+}
+
+/* Números usan la familia y peso definidos */
 .numbers {
   font-family: $font-numbers;
+}
+
+/* Estilos globales de utilidades (opcionales pero útiles) */
+.container-section {
+  padding: var(--section-padding); /* 48px 24px por defecto */
+  gap: var(--section-gap-vertical);
+}
+
+/* Botones (ejemplo usando tokens) */
+.btn {
+  border-radius: var(--radius-sm);
+  padding: calc(var(--space-1) / 2) var(--space-2);
+  font-weight: 600;
+  cursor: pointer;
+}
+
+/* Focus accesible */
+:focus {
+  outline: none;
+  box-shadow: 0 0 0 4px rgba(0, 105, 192, 0.12);
 }

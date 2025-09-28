@@ -1,31 +1,56 @@
+// variables.scss (ACTUALIZADO)
+// ==========================
+// Tokens globales: colores, tipografías, espaciado, tamaños, mixins
+// Cambios clave:
+// - Escala de spacing modular base 8px ( --space-1 == 8px )
+// - Section paddings y gaps ahora referencian dichos tokens
+// - Headlines ajustados a tamaños coherentes (valores rem que caen en múltiplos de 8px cuando aplica)
+// - Hero tokens preservados para NO alterar la apariencia del carrusel
+// -----------------------------------------------------------------
+
+// --------------------
+// SCSS color & font aliases (para uso en .scss con @use)
+// --------------------
 $font-heading: "Montserrat", serif;
 $font-body: "Montserrat", sans-serif;
 $font-numbers: "Montserrat", monospace;
-// src/styles/_variables.scss
-// ==========================
-// Palette (proporcionada)
-$color-1: #0069c0; // primary (marca)
-$color-2: #137fd9; // primary-variant
-$color-3: #2196f3; // accent / interactive
-$color-4: #003764; // contrast
-$gray-1:  #5e6266; // text-dark / neutral strong
-$gray-2:  #929292; // text-muted / neutral light
 
-// Semantic tokens (usa estas en tu CSS)
+// Palette (SASS variables para colores cuando los uses en SASS)
+$color-1: #03256C; // primary (marca)
+$color-2: #FABC3C;
+$color-3: #E15554;
+$color-4: #003764; // contraste / usado en slide-2
+$gray-1:  #5e6266;
+$gray-2:  #929292;
+
+$footer-bg: #121214;
+$footer-bg-2: #1f1f23;
+$footer-text: #ffffff;
+$muted: #cfcfcf;
+
+// --------------------
+// CSS Custom Properties (expuestos en runtime en :root)
+// - Spacing scale ahora modular (base 8px)
+// - Section paddings y gaps parametrizados con tokens
+// --------------------
 :root {
   /* Brand */
-  --color-primary: #0069c0;
-  --color-primary-600: #137fd9;
-  --color-accent: #2196f3;
+  --color-primary: #03256C;
+  --color-primary-600: #021f4e; /* tono más oscuro para hover, etc */
+  --color-secondary: #FABC3C;
+  --color-secondary-600: #e6a733;
+  --color-terciary: #E15554;
+  --color-terciary-600: #c94b4a;
+  --color-accent: #003764;
 
   /* Neutrals / Text */
   --text: #5e6266;
   --text-muted: #929292;
 
   /* Surfaces & borders */
-  --bg: #ffffff;          /* página principal */
-  --surface: #ffffff;     /* cards, contenedores */
-  --muted-border: #e6e9ec;/* linea sutil */
+  --bg: #F7F7F8;
+  --surface: #FBFFFE;
+  --muted-border: #e6e9ec;
 
   /* Semantic states */
   --success: #16a34a;
@@ -34,12 +59,84 @@ $gray-2:  #929292; // text-muted / neutral light
 
   /* Misc */
   --overlay-dark: rgba(0,0,0,0.45);
-  --radius: 12px;
+
+  /* Border radii (se mantienen valores prácticos) */
+  --radius: 12px;     /* se puede bajar a 8px si quieres una escala más "cuadrada" */
   --radius-sm: 8px;
   --elevation-1: 0 6px 18px rgba(15, 23, 42, 0.06);
+
+  /* ----------------
+     Spacing scale (base 8px)
+     --space-N representará múltiplos de 8px
+     ---------------- */
+  --space-1: 0.5rem;   /* 8px  */
+  --space-2: 1rem;     /* 16px */
+  --space-3: 1.5rem;   /* 24px */
+  --space-4: 2rem;     /* 32px */
+  --space-5: 3rem;     /* 48px */
+  --space-6: 4rem;     /* 64px */
+  --space-7: 6rem;     /* 96px (opcional para márgenes grandes) */
+
+  /* ----------------
+     Carousel / Hero tokens (PRESERVADOS para no alterar el hero)
+     ---------------- */
+  --carousel-control-size: 3.5rem;   /* ancho del área clicable de controles (preservado) */
+  --carousel-control-offset: 1.5rem; /* desplazamiento left/right de controles (preservado) */
+
+  --hero-max-height: 100vh;
+  --hero-min-height: 400px;
+  --hero-text-bottom: 8vh;
+  --hero-text-left: 10vw;
+
+  --hero-btn-padding-vertical: 2vh;
+  --hero-btn-padding-horizontal: 3vw;
+  --hero-btn-border-width: 3px;
+  --hero-btn-font-size: large;
+
+  --type-h1-min: 10px;
+  --type-h1-vw: 7vw;
+  --type-h1-max: 55px;
+
+  --type-p-min: 8px;
+  --type-p-vw: 3vw;
+  --type-p-max: 25px;
+
+  /* ----------------
+     Headings (escala tipográfica coherente)
+     - se usan rems que mapean a múltiplos de 8px cuando es práctico
+     ---------------- */
+  --h1-size: 3rem;    /* 48px */
+  --h2-size: 2.5rem;  /* 40px */
+  --h3-size: 2rem;    /* 32px */
+  --h4-size: 1.5rem;  /* 24px */
+  --h5-size: 1rem;    /* 16px */
+  --h6-size: 0.875rem;/* 14px (un escalón fino; si prefieres múltiplo 8 -> 12px ó 16px) */
+
+  /* Section tokens (paddings / gaps ahora referencian la escala modular) */
+  --section-gap-vertical: var(--space-4);     /* 32px */
+  --section-padding: var(--space-5) var(--space-3); /* 48px 24px */
+  --razones-padding: var(--space-3); /* 24px en lugar de 20px */
+  --razones-text-gap: var(--space-2); /* 16px en lugar de 2vw */
+
+  /* Misc specific */
+  --carrusel-col-max-width: 600px;
+  --numbers-font-size: 2rem;   /* 32px */
+  --numbers-font-weight: 800;
+
+  /* Responsive breakpoint tokens (si quieres usarlos como var) */
+  --bp-sm: 576px;
+  --bp-md: 768px;
+  --bp-lg: 992px;
+  --bp-xl: 1200px;
+
+
+  
 }
 
-/* SCSS aliases/helpers */
+/* --------------------
+   SCSS aliases & helpers (para usar en archivos .scss)
+   - actualizados para mapear la escala de 8px
+   -------------------- */
 $primary: var(--color-primary);
 $primary-600: var(--color-primary-600);
 $accent: var(--color-accent);
@@ -47,7 +144,22 @@ $text: var(--text);
 $text-muted: var(--text-muted);
 $radius: var(--radius);
 
-/* Utility mixins */
+/* Espacio (alias scss) - mantener en rem para consistencia */
+$space-1: 0.5rem;  // 8px
+$space-2: 1rem;    // 16px
+$space-3: 1.5rem;  // 24px
+$space-4: 2rem;    // 32px
+$space-5: 3rem;    // 48px
+$space-6: 4rem;    // 64px
+
+
+
+
+
+
+/* --------------------
+   Utility mixins / functions (sin cambios funcionales)
+   -------------------- */
 @function hex-to-rgba($hex, $alpha: 1) {
   @return rgba(red($hex), green($hex), blue($hex), $alpha);
 }
@@ -56,3 +168,13 @@ $radius: var(--radius);
   box-shadow: 0 0 0 4px rgba($color, $alpha);
   outline: none;
 }
+
+/* --------------------
+   Breakpoints as SASS variables (útiles para @media queries en SCSS)
+   -------------------- */
+$bp-sm: 576px;
+$bp-md: 768px;
+$bp-lg: 992px;
+$bp-xl: 1200px;
+
+/* FIN variables.scss (ACTUALIZADO) */

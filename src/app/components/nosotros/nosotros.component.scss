@@ -1,0 +1,145 @@
+@use "../../../variables.scss" as *;
+
+/* ===========================
+   Sección "Nosotros" - versión corregida visibilidad
+   =========================== */
+
+.nosotros {
+  width: 100%;
+  background-color: var(--bg);
+  &-hero {
+    background-color: var(--color-primary);
+    color: var(--bg);
+    text-align: center;
+    padding: var(--space-7) 0 0 0;
+  }
+  &-wave {
+    /* evita líneas finas: ajusta si hace falta */
+    width: 100%;
+    height: var(--wave-height, 120px);
+    display: block;
+    pointer-events: none;
+    z-index: 2; /* encima del fondo azul */
+  }
+
+  &-hero__title {
+    margin: 0;
+    font-size: var(--h2-size);
+    color: var(--bg);
+    font-weight: 700;
+  }
+
+  &-video {
+    background: var(--bg);
+    color: var(--text); /* asegura color legible dentro del bloque */
+  }
+
+  .video-card {
+    width: clamp(320px, 80vw, 1100px);
+    margin: 0 auto;
+    background: var(--surface);
+    border-radius: var(--radius);
+    box-shadow: var(--elevation-1);
+    padding: var(--space-3);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid rgba(0, 0, 0, 0.04); /* sutil borde para visibilidad */
+  }
+
+  .video-card__media {
+    width: 100%;
+    height: auto;
+    max-height: 80vh;
+    border-radius: calc(var(--radius) - 4px);
+    display: block;
+    background: #000; /* si video no carga, se ve fondo negro */
+  }
+
+  &-team {
+    /* 
+VARIABLES PARA TARJETAS EN NOSOTROS
+--------------------
+/* ancho mínimo/máximo por tarjeta (min se usará para disparar cuándo bajar columnas) */
+    --card-min: 250px; /* ancho mínimo deseado por tarjeta */
+    --card-max: 350px; /* máximo: 1fr para que ocupe el espacio disponible de la columna */
+
+    --card-gap: 1rem; /* gap entre tarjetas (fila y columna) */
+    --cards-max-width: 1200px; /* opcional: ancho máximo del grid centrado */
+
+    /* COLUMNAS objetivo (ajusta según layout inicial) */
+    --cols-desktop: 3; /* número de columnas inicial en escritorio */
+    --cols-tablet: 2; /* número de columnas en breakpoint intermedio */
+    --cols-mobile: 1; /* móvil */
+
+    /* TRANSICIÓN (suaviza el reflow visual) */
+    --cards-transition: 220ms;
+
+    // padding: var(--section-gap-vertical);
+    text-align: center;
+    background-color: var(--color-terciary);
+    display: flex;
+    flex-direction: column;
+    gap: var(--section-gap-vertical);
+
+    #inverted-wave {
+      transform: rotate(180deg);
+      transform-origin: center;
+      width: 100%;
+      height: var(--wave-height, 120px);
+      display: block;
+      pointer-events: none;
+      z-index: 2; /* encima del fondo azul */
+    }
+    &__title {
+      margin: var(--space-4) 0 var(--space-4) 0;
+      font-size: var(--h3-size);
+      font-weight: 700;
+      color: var(--surface); /* forzamos color legible */
+    }
+  }
+
+  .consultores-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content:center;
+    gap: var(--space-3);
+    align-items: start;
+    margin-top: var(--space-2);
+    padding: var(--razones-padding);
+  }
+
+  .consultor-card {
+    background: var(--surface);
+    border-radius: var(--radius-sm);
+    width: clamp(var(--card-min), 40vw, var(--card-max));
+    padding: var(--razones-padding);
+    box-shadow: var(--elevation-1);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 110px;
+    border: 1px solid rgba(0, 0, 0, 0.03);
+    color: var(--text); /* fuerza texto legible */
+
+  }
+
+  .consultor-card__name {
+    margin: 0 0 var(--space-2) 0;
+    font-size: var(--h4-size);
+    color: var(--text);
+    font-weight: 600;
+  }
+
+  .btn-conocer {
+    background: transparent;
+    border: 2px solid var(--color-primary);
+    color: var(--color-primary);
+    padding: calc(var(--space-1) / 1.2) var(--space-2);
+    border-radius: var(--radius-sm);
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 220ms ease, color 220ms ease,
+      transform 160ms ease;
+  }
+}

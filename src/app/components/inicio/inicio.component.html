@@ -1,68 +1,152 @@
-<div class="container-fluid imagen-inicio">
-    <h1>Fortalecimiento Empresarial</h1>
-    <h5>Cooperativa de Acompañamiento Organizacional</h5>
-</div>
+<section class="inicio">
+    <div class="col-md-6 carrusel-inicio">
+        <div class="carrusel">
+            <div id="carouselExampleAutoplaying" class="carousel slide" 
+            data-bs-ride="carousel"  data-bs-pause="false"
+            data-bs-interval="4500">
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <div class="slide-1">
+                            <div class="text">
+                                <h1>Estrategias digitales para aumentar tu visibilidad</h1>
+                                <div class="texto-boton">
+                                    <p>
+                                        Implementamos estrategias de marketing digital enfocadas a incrementar la
+                                        visibilidad y
+                                        atraer nuevos clientes de manera efectiva
+                                    </p>
+                                    <button>
+                                        Solicitar diagnostico
+                                    </button>
+                                </div>
 
-
-
-<div class="container-fluid seccion-1">
-    <div class="row align-items-center custom-row">
-
-        <div class="col-md-6 carrusel-col">
-            <div class="carrusel">
-                <div id="carouselExampleAutoplaying" class="carousel slide" data-bs-ride="carousel"
-                    data-bs-interval="3000">
-                    <div class="carousel-inner">
-                        <div class="carousel-item active">
-                            <img src="img/ejemplo-carrusel-1.jpg" class="d-block w-100" alt="...">
+                            </div>
                         </div>
-                        <div class="carousel-item">
-                            <img src="img/ejemplo-carrusel-2.jpg" class="d-block w-100" alt="...">
+
+                    </div>
+                    <div class="carousel-item">
+                        <div class="slide-2">
+                            <div class="text">
+                                <h1>Inglés conversacional para asociados</h1>
+                                <div class="texto-boton">
+                                    <p>
+                                        Capacitación práctica en inglés conversacional, adaptada a las necesidades
+                                        cotidianas
+                                        de los asociados
+                                    </p>
+                                    <button>Conoce más</button>
+                                </div>
+
+                            </div>
                         </div>
-                        <div class="carousel-item">
-                            <img src="img/ejemplo-carrusel-3.jpg" class="d-block w-100" alt="...">
+                    </div>
+                    <div class="carousel-item">
+                        <div class="slide-3">
+                            <div class="text">
+                                <h1>Liderazgo femenino en el sector solidario</h1>
+                                <div class="texto-boton">
+                                    <p>
+                                        Impulsamos a mujeres asociadas para liderar desde una perspectiva de equidad y
+                                        transformacion social
+                                    </p>
+                                    <button>Conoce más</button>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <div class="slide-4">
+                            <div class="text">
+                                <h1>Excelencia en el servicio: El efecto onda</h1>
+                                <div class="texto-boton">
+                                    <p>
+                                        Ofrecemos herramientas prácticas para brindar un servicio al cliente excepcional
+                                        y
+                                        generar fidelización.
+                                    </p>
+                                    <button>Conoce más</button>
+                                </div>
+
+                            </div>
                         </div>
                     </div>
                 </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleAutoplaying"
+                    data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleAutoplaying"
+                    data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div class="container-fluid seccion-1">
+        <div class="row align-items-center custom-row">
+
+            <div class="col-md-6 carrusel-col">
+                <div class="carrusel">
+                    <div id="carouselExampleAutoplaying" class="carousel slide" data-bs-ride="carousel"
+                        data-bs-interval="3000">
+                        <div class="carousel-inner">
+                            <div class="carousel-item active">
+                                <img src="img/ejemplo-carrusel-1.jpg" class="d-block w-100" alt="...">
+                            </div>
+                            <div class="carousel-item">
+                                <img src="img/ejemplo-carrusel-2.jpg" class="d-block w-100" alt="...">
+                            </div>
+                            <div class="carousel-item">
+                                <img src="img/ejemplo-carrusel-3.jpg" class="d-block w-100" alt="...">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
             </div>
 
+            <div class="col-md-6 razones">
+                <h2 class="titulo">Buscamos</h2>
+                <h5>Impulsar el desarrollo de las empresas a través de un acompañamiento integral y personalizado.</h5>
+
+                <span class="numbers">
+                    +
+                    <span class="numbers" [countUp]="12000" [duration]="2000"></span>
+                </span>
+
+                <h5>Personas capacitadas</h5>
+
+                <span class="numbers">
+                    +
+                    <span class="numbers" [countUp]="200" [duration]="2000"></span>
+                </span>
+                <h5>Marcas han trabajado con nosotros</h5>
+                <span class="numbers" [countUp]="22" [duration]="2000"></span>
+
+                <h5>Años de trayectoria</h5>
+
+            </div>
         </div>
 
-        <div class="col-md-6 razones">
-            <h2 class="titulo">Buscamos</h2>
-            <h5>Impulsar el desarrollo de las empresas a través de un acompañamiento integral y personalizado.</h5>
+    </div>
 
-            <span class="numbers">
-                +
-                <span class="numbers" [countUp]="1000" [duration]="2000"></span>
-            </span>
+    <div class="container-fluid seccion-2">
+        <div class="row custom-row">
+            <div class="col-12 col-md-6 texto">
+                <h2 class="titulo">¿Quiénes somos?</h2>
+                <h5>Somos una cooperativa dedicada a fortalecer el tejido empresarial mediante un acompañamiento
+                    organizacional integral, personalizado y adaptado a las necesidades de cada empresa.</h5>
+            </div>
 
-            <h5>Personas formadas</h5>
-
-            <span class="numbers">
-                +
-                <span class="numbers" [countUp]="1000" [duration]="2000"></span>
-            </span>
-            <h5>Empresas con resultados reales</h5>
-            <span class="numbers" [countUp]="123" [duration]="2000"></span>
-
-            <h5>Capacitaciones dictadas</h5>
-
+            <div class="col-12 col-md-6 col-imagen">
+                <img src="img/quienes-somos.jpg" class="img-fluid" alt="Imagen de la sección 2">
+            </div>
         </div>
     </div>
 
-</div>
 
-
-<div class="container-fluid seccion-2">
-  <div class="row custom-row">
-    <div class="col-12 col-md-6 texto">
-      <h2 class="titulo">¿Quiénes somos?</h2>
-      <h5>Somos una cooperativa dedicada a fortalecer el tejido empresarial mediante un acompañamiento organizacional integral, personalizado y adaptado a las necesidades de cada empresa.</h5>
-    </div>
-
-    <div class="col-12 col-md-6 col-imagen">
-      <img src="img/quienes-somos.jpg" class="img-fluid" alt="Imagen de la sección 2">
-    </div>
-  </div>
-</div>
+</section>

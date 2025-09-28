@@ -129,7 +129,7 @@
         rgba(0,0,0,0.35) 0%,
         rgba(0,0,0,0) 100%
       ),
-      url("/img/carrusel-img-2.png");
+      url("/img/carrusel-img-2.jpg");
 
     /* mantiene color exacto (SASS var) */
     h1 { color: $color-4; }
@@ -156,7 +156,7 @@
         rgba(0,0,0,0) 0%,
         rgba(0,0,0,0.5) 100%
       ),
-      url("/img/carrusel-img-3.png");
+      url("/img/carrusel-img-3.jpg");
   }
 
   .slide-4 {
@@ -167,7 +167,7 @@
         rgba(0,0,0,0.2) 50%,
         rgba(0,0,0,0.5) 100%
       ),
-      url("/img/carrusel-img-4.png");
+      url("/img/carrusel-img-4.jpg");
   }
 }
 
